@@ -1,12 +1,10 @@
 import { memo, useState } from "react";
-import { View } from "@tarojs/components";
+import { Button, View } from "@tarojs/components";
 import { usePrizeList } from "./core/usePrizeLIst";
 import LuckDraw from "./components/LuckDraw";
-import { AtButton, AtModal } from "taro-ui";
+import { AtButton, AtModal, AtModalHeader, AtModalAction } from "taro-ui";
 import "./index.scss";
 import { SettingPrize } from "./components/SettingPrize";
-import "taro-ui/dist/style/components/modal.scss";
-import "taro-ui/dist/style/components/button.scss";
 
 const Container = () => {
   const { prizeList, changePrizeList } = usePrizeList();
@@ -58,19 +56,21 @@ const Container = () => {
           }
         />
       </View>
-      <AtModal
-        isOpened={introduceShow}
-        title="吃啥纯凭天意 😄"
-        cancelText="取消"
-        confirmText="确认"
-        onClose={() => {
-          setIntroduceShow(false);
-        }}
-        closeOnClickOverlay
-        content={
-          "还在未外卖或出去玩时吃啥而烦恼吗，把问题交给它吧，它替你决定吃啥🤭"
-        }
-      />
+      <AtModal isOpened={introduceShow}>
+        <AtModalHeader>吃啥纯凭天意 😄</AtModalHeader>
+        <View className="px-3 py-2 text-sm">
+          还在未外卖或出去玩时吃啥而烦恼吗？把问题交给它吧，它替你决定吃啥🤭
+        </View>
+        <AtModalAction>
+          <Button
+            onClick={() => {
+              setIntroduceShow(false);
+            }}
+          >
+            确定
+          </Button>
+        </AtModalAction>
+      </AtModal>
     </View>
   );
 };

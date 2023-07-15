@@ -7,22 +7,27 @@ export function usePrizeList() {
   const [prizeList, setPrizeList] = useState<TPrizeList>([]);
 
   useEffect(() => {
-    setPrizeList(mockList);
-    // (async () => {
-    //   const storageList = await getStorage("snowPrizeList");
-
-    //   if (!storageList || JSON.parse(storageList).length !== 8) {
-    //     setPrizeList(mockList);
-    //   } else {
-    //     setPrizeList(JSON.parse(storageList));
-    //   }
-    // })();
+    (async () => {
+      try {
+        const storageList = await getStorage("snowPrizeList");
+        console.log(storageList);
+        if (!storageList || JSON.parse(storageList).length !== 8) {
+          setPrizeList(mockList);
+        } else {
+          setPrizeList(JSON.parse(storageList));
+        }
+      } catch (error) {
+        setPrizeList(mockList);
+      }
+    })();
   }, []);
 
   const changePrizeList = async (newPrizeList: TPrizeList) => {
-    const newList = [...newPrizeList];
-    setPrizeList(newList);
-    // await saveStorage("snowPrizeList", JSON.stringify(newList));
+    // const newList = [...newPrizeList];
+
+    console.log("newPr", newPrizeList);
+    await saveStorage("snowPrizeList", JSON.stringify(newPrizeList));
+    setPrizeList(newPrizeList);
   };
 
   return {

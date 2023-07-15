@@ -1,22 +1,14 @@
-import { Component, PropsWithChildren } from "react";
-import { View, Text } from "@tarojs/components";
-import { AtButton, AtGrid } from "taro-ui";
+import { AtGrid } from "taro-ui";
 import { navigateTo } from "@tarojs/taro";
-
-import "taro-ui/dist/style/components/button.scss"; // 按需引入
 import "./index.scss";
 
 export default function Index() {
   return (
     <>
-      <View className=" flex">
-        <View>11</View>
-        <View>22</View>
-      </View>
       <AtGrid
         onClick={(item, index) => {
           console.log(item, index);
-          if (index === 3) {
+          if (index === 0) {
             navigateTo({
               url: "/pages/lottery/index",
             });
@@ -24,34 +16,8 @@ export default function Index() {
         }}
         data={[
           {
-            image:
-              "https://img12.360buyimg.com/jdphoto/s72x72_jfs/t6160/14/2008729947/2754/7d512a86/595c3aeeNa89ddf71.png",
-            value: "Todo-List",
-          },
-          {
-            image:
-              "https://img20.360buyimg.com/jdphoto/s72x72_jfs/t15151/308/1012305375/2300/536ee6ef/5a411466N040a074b.png",
-            value: "壁纸大全",
-          },
-          {
-            image:
-              "https://img10.360buyimg.com/jdphoto/s72x72_jfs/t5872/209/5240187906/2872/8fa98cd/595c3b2aN4155b931.png",
-            value: "证件照",
-          },
-          {
-            image:
-              "https://img12.360buyimg.com/jdphoto/s72x72_jfs/t10660/330/203667368/1672/801735d7/59c85643N31e68303.png",
-            value: "今天吃什么",
-          },
-          {
-            image:
-              "https://img14.360buyimg.com/jdphoto/s72x72_jfs/t17251/336/1311038817/3177/72595a07/5ac44618Na1db7b09.png",
-            value: "影视大全",
-          },
-          {
-            image:
-              "https://img30.360buyimg.com/jdphoto/s72x72_jfs/t5770/97/5184449507/2423/294d5f95/595c3b4dNbc6bc95d.png",
-            value: "书籍集合",
+            image: "https://image.jimmyxuexue.top/img/202307151759735.png",
+            value: "饭食大转盘",
           },
         ]}
       />

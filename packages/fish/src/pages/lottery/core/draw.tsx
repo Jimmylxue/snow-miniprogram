@@ -61,10 +61,13 @@ export function useLuckDraw() {
     };
 
     changeSpeed(tickIndex, 4000, (_tickIndex: number) => {
+      // diffCheck();  如果不考虑速度的切换 就在结束后调用这个方法即可
       speedLevel.current += 1;
       changeSpeed(_tickIndex, 2000, (__tickIndex) => {
         tickIndex = __tickIndex;
-        diffCheck();
+        setTimeout(() => {
+          diffCheck();
+        }, speed[speedLevel.current]);
       });
     });
   };
