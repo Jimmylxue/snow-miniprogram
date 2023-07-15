@@ -12,12 +12,20 @@ export default function Index() {
             navigateTo({
               url: "/pages/lottery/index",
             });
+          } else if (index === 1) {
+            navigateTo({
+              url: "/pages/wallpaper/index",
+            });
           }
         }}
         data={[
           {
             image: "https://image.jimmyxuexue.top/img/202307151759735.png",
             value: "饭食大转盘",
+          },
+          {
+            image: "https://image.jimmyxuexue.top/img/202307152105120.png",
+            value: "壁纸大全",
           },
         ]}
       />
