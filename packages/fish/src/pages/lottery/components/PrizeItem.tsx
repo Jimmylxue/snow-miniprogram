@@ -1,5 +1,5 @@
 import { View, Text } from "@tarojs/components";
-import React, { FC } from "react";
+import { FC } from "react";
 
 interface TProps {
   item: {
@@ -8,10 +8,10 @@ interface TProps {
   };
   prizeIndex: number;
   index: number;
-  onTouch: () => void;
+  onDraw: () => void;
 }
 
-export const PrizeItem: FC<TProps> = ({ prizeIndex, item, index, onTouch }) => {
+export const PrizeItem: FC<TProps> = ({ prizeIndex, item, index, onDraw }) => {
   const isDrawBtn = item.name === "立即抽奖" && item.itemType === "button";
   return (
     <View
@@ -24,15 +24,10 @@ export const PrizeItem: FC<TProps> = ({ prizeIndex, item, index, onTouch }) => {
       }}
       onClick={() => {
         if (isDrawBtn) {
-          onTouch?.();
+          onDraw?.();
         }
       }}
       className=" flex justify-center items-center mt-2 rounded-lg"
-      onTouchStart={() => {
-        if (isDrawBtn) {
-          onTouch?.();
-        }
-      }}
     >
       <Text
         className=" text-bold"

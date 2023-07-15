@@ -2,6 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { TPrizeList } from "../core/types";
 import { AtFloatLayout, AtInput, AtButton } from "taro-ui";
 import { View } from "@tarojs/components";
+import "./index.scss";
 
 interface TProps {
   show: boolean;
@@ -25,31 +26,41 @@ export const SettingPrize: FC<TProps> = ({
   }, [prizeList]);
 
   return (
-    <>
+    <View className="">
       <AtFloatLayout title={title} isOpened={show} onClose={onClose}>
-        <View className="px-4">
-          {JSON.stringify(list)}
+        <View className="setting-prize">
           {list.map((prize, index) => (
             <AtInput
+              key={index}
               name="value"
-              title="标准五个字"
               type="text"
-              placeholder="标准五个字"
-              // value={this.state.value}
-              // onChange={this.handleChange.bind(this)}
+              title=""
+              style={{
+                fontSize: 12,
+                lineHeight: 18,
+                padding: "5px 0",
+              }}
+              placeholder="请输入菜名"
+              value={prize.name}
+              onChange={(val) => {
+                const newList = [...prizeList];
+                newList[index].name = val as string;
+                setPrizeList(newList);
+              }}
             />
           ))}
           <AtButton
+            type="primary"
             className="mt-3"
             onClick={() => {
               onConfirm(prizeList);
               onClose();
             }}
           >
-            确认修改
+            确定
           </AtButton>
         </View>
       </AtFloatLayout>
-    </>
+    </View>
   );
 };

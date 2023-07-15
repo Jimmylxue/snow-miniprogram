@@ -1,11 +1,11 @@
-import { useCallback, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { transformWinPrizeItem } from "./transform";
 
 export function useLuckDraw() {
   const progressIndex = [0, 1, 2, 5, 8, 7, 6, 3];
   const [prizeIndex, setPrizeIndex] = useState<number>(3); // 中奖高亮的key
   const [isDrawing, setIsDrawing] = useState<boolean>(false);
-  const speed = [50, 300]; // 速度 ms 单位
+  const speed = [50, 300]; // 速度 ms 单位 滚动速度从快到慢
   const speedLevel = useRef<number>(0); // 速度等级 => 对应的speed的下标
 
   const changeSpeed = (
@@ -26,7 +26,13 @@ export function useLuckDraw() {
     }, timer);
   };
 
-  const draw = useCallback((prizeKey: number) => {
+  const draw = ({
+    prizeKey,
+    onFinish,
+  }: {
+    prizeKey: number;
+    onFinish: () => void;
+  }) => {
     const layoutKey = transformWinPrizeItem(prizeKey);
     setIsDrawing(true);
     let tickIndex = 0;
@@ -50,6 +56,7 @@ export function useLuckDraw() {
         setIsDrawing(false);
         speedLevel.current = 0;
         setPrizeIndex(progressIndex[tickIndex]);
+        onFinish?.();
       }
     };
 
@@ -60,7 +67,7 @@ export function useLuckDraw() {
         diffCheck();
       });
     });
-  }, []);
+  };
 
   return {
     prizeIndex,
