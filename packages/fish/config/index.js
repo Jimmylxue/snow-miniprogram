@@ -1,3 +1,5 @@
+import path from "path";
+
 const config = {
   projectName: "fish",
   date: "2023-7-14",
@@ -64,6 +66,9 @@ const config = {
         },
       },
     },
+  },
+  alias: {
+    "@/components": path.resolve(__dirname, "..", "src/components"),
   },
 };
 

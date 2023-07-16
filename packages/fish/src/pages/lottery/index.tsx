@@ -56,7 +56,12 @@ const Container = () => {
           }
         />
       </View>
-      <AtModal isOpened={introduceShow}>
+      <AtModal
+        isOpened={introduceShow}
+        onClose={() => {
+          setIntroduceShow(false);
+        }}
+      >
         <AtModalHeader>吃啥纯凭天意 😄</AtModalHeader>
         <View className="px-3 py-2 text-sm">
           还在未外卖或出去玩时吃啥而烦恼吗？把问题交给它吧，它替你决定吃啥🤭

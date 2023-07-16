@@ -25,11 +25,12 @@ export type TBingImageList = {
 
 export function useBingBg(
   queryKey: QueryKey,
+  variable: {},
   config?: UseQueryOptions<TBingImageList, ClientError>
 ) {
   return useQuery<TBingImageList, ClientError>(
     queryKey,
-    () => get("/bingBg/weekList"),
+    () => get("/bingBg/weekList", variable),
     config
   );
 }

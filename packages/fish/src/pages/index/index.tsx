@@ -1,6 +1,5 @@
-import { AtGrid } from "taro-ui";
+import { AtDivider, AtGrid } from "taro-ui";
 import { navigateTo } from "@tarojs/taro";
-import "./index.scss";
 
 export default function Index() {
   return (
@@ -29,6 +28,7 @@ export default function Index() {
           },
         ]}
       />
+      <AtDivider content="分割线" />
     </>
   );
 }

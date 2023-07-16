@@ -1,8 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import { TPrizeList } from "../core/types";
-import { AtFloatLayout, AtInput, AtButton } from "taro-ui";
-import { View } from "@tarojs/components";
-// import "taro-ui/dist/style/components/input.scss";
+import { AtFloatLayout, AtButton } from "taro-ui";
+import { View, Input } from "@tarojs/components";
 import "./index.scss";
 
 interface TProps {
@@ -23,7 +22,6 @@ export const SettingPrize: FC<TProps> = ({
   const [list, setPrizeList] = useState<TPrizeList>([]);
 
   useEffect(() => {
-    console.log("prize:ist", prizeList);
     setPrizeList(prizeList);
   }, [prizeList]);
 
@@ -32,36 +30,35 @@ export const SettingPrize: FC<TProps> = ({
       <AtFloatLayout title={title} isOpened={show} onClose={onClose}>
         <View className="setting-prize">
           {list.map((prize, index) => (
-            // <Input value={prize.name} />
-            <AtInput
+            <Input
               key={index}
-              name="value"
-              type="text"
-              title=""
+              value={prize.name}
+              placeholder="请输入菜名"
               style={{
-                fontSize: 12,
+                fontSize: 14,
                 lineHeight: 18,
                 padding: "5px 0",
+                borderBottom: "1px solid  rgb(97,144,232)",
               }}
-              placeholder="请输入菜名"
-              value={prize.name}
-              onChange={(val) => {
+              onInput={(value) => {
+                console.log("dd", value);
                 const newList = [...prizeList];
-                newList[index].name = val as string;
+                newList[index].name = value.detail.value as string;
                 setPrizeList(newList);
               }}
             />
           ))}
-          <AtButton
-            type="primary"
-            className="mt-3"
-            onClick={() => {
-              onConfirm(prizeList);
-              onClose();
-            }}
-          >
-            确定
-          </AtButton>
+          <View className="mt-3">
+            <AtButton
+              type="primary"
+              onClick={() => {
+                onConfirm(prizeList);
+                onClose();
+              }}
+            >
+              确定
+            </AtButton>
+          </View>
         </View>
       </AtFloatLayout>
     </View>
