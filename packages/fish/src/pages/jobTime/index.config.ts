@@ -1,5 +1,5 @@
 export default definePageConfig({
-  navigationBarTitleText: "饭食大转盘",
+  navigationBarTitleText: "打工时钟",
   enableShareAppMessage: true,
   enableShareTimeline: true,
 });

@@ -5,7 +5,8 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"fish:wx": "pnpm -C ./packages/fish dev:weapp"
+		"fish:wx": "pnpm -C ./packages/fish dev:weapp",
+		"fish:wx-build": "pnpm -C ./packages/fish build:weapp"
 	},
 	"keywords": [],
 	"author": "",

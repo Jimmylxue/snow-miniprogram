@@ -85,7 +85,6 @@ export default function Index() {
           </View>
         </View>
       ))}
-
       <AtModal isOpened={introduceShow}>
         <AtModalHeader>壁纸大全 😄</AtModalHeader>
         <View className="px-3 py-2 text-sm">
