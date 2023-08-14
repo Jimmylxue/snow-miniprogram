@@ -1,5 +1,5 @@
-import { ClientError } from "@snow-miniprogram/config";
-import { get } from "@snow-miniprogram/api";
+import { ClientError } from "@/api/react-query";
+import { get } from "@/api/client";
 import { QueryKey, UseQueryOptions, useQuery } from "react-query";
 
 type TBingImageItem = {

@@ -1,7 +1,7 @@
 import { View, Image, Button } from "@tarojs/components";
 import "./index.scss";
 import "taro-ui/dist/style/components/card.scss";
-import { useBingBg } from "../../service/background";
+import { useBingBg } from "@/services/background";
 import { AtIcon, AtModal, AtModalAction, AtModalHeader } from "taro-ui";
 import {
   previewImage,
