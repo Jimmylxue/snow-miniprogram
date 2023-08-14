@@ -30,6 +30,16 @@ const config = {
     enable: false, // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
   },
   mini: {
+    webpackChain(chain) {
+      chain.merge({
+        performance: {
+          //入口起点的最大体积 限制500kb
+          maxEntrypointSize: 512000,
+          //生成文件的最大体积
+          maxAssetSize: 512000,
+        },
+      });
+    },
     postcss: {
       pxtransform: {
         enable: true,
