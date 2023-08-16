@@ -4,6 +4,8 @@ export default defineAppConfig({
     "pages/lottery/index",
     "pages/wallpaper/index",
     "pages/jobTime/index",
+    "pages/book/index",
+    "pages/bookDetail/index",
   ],
   window: {
     backgroundTextStyle: "light",

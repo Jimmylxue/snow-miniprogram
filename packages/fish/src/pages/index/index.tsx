@@ -5,6 +5,28 @@ import { STitle } from "@/components/Title";
 export default function Index() {
   return (
     <>
+      <STitle titleName="学习" />
+      <AtGrid
+        onClick={(item, index) => {
+          console.log(item, index);
+          if (index === 0) {
+            // showToast({
+            //   title: "敬请期待",
+            //   icon: "none",
+            //   duration: 2000,
+            // });
+            navigateTo({
+              url: "/pages/book/index",
+            });
+          }
+        }}
+        data={[
+          {
+            image: "https://image.jimmyxuexue.top/img/202308161415580.png",
+            value: "书籍集合",
+          },
+        ]}
+      />
       <STitle titleName="摸鱼" />
       <AtGrid
         onClick={(item, index) => {
